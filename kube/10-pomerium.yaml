@@ -1,0 +1,16 @@
+apiVersion: ingress.pomerium.io/v1
+kind: Pomerium
+metadata:
+  name: global
+spec:
+  secrets: pomerium/bootstrap
+  authenticate:
+    url: https://authenticate.bigasterisk.com
+  identityProvider:
+    provider: google
+    secret: pomerium/idp
+    refreshDirectory:
+      interval: "10h"
+      timeout: "10s"
+  certificates:
+    - pomerium/pomerium-proxy-tls
