@@ -12,5 +12,6 @@ spec:
     refreshDirectory:
       interval: "10h"
       timeout: "10s"
-  certificates:
-    - pomerium/pomerium-proxy-tls
+  # Note pom won't start up if this cert doesn't exist, so you have to run once
+  # with it commented out, then after cert success, run again with it enabled.
+  certificates: [pomerium/pomerium-proxy-tls]
