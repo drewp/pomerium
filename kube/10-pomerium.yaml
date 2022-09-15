@@ -7,11 +7,15 @@ spec:
   authenticate:
     url: https://authenticate.bigasterisk.com
   identityProvider:
-    provider: google
+    provider: oidc
+    url: https://accounts.google.com
+    scopes:
+      - openid
+      - email
+      # adds name+locale to user details
+      - profile
     secret: pomerium/idp
-    refreshDirectory:
-      interval: "10h"
-      timeout: "10s"
+
   # Note pom won't start up if this cert doesn't exist, so you have to run once
   # with it commented out, then after cert success, run again with it enabled.
   certificates: [pomerium/pomerium-proxy-tls]
